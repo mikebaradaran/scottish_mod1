@@ -1,0 +1,87 @@
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
+
+class Person {
+	private String name;
+	private String email;
+
+	public Person(String name, String email) {
+		this.name = name;
+		this.email = email;
+	}
+
+	public String getDetails() {
+		return name + " (" + email + ")";
+	}
+}
+
+// ----------------- Student Class -----------------
+class Student extends Person {
+	private String studentId;
+
+	public Student(String name, String email, String studentId) {
+		super(name, email);
+		this.studentId = studentId;
+	}
+
+	public String getStudentId() {
+		return studentId;
+	}
+	
+	public String getDetails() {
+		return "ID: " + studentId + " " + super.getDetails();
+	}
+}
+
+// ----------------- Course Class -----------------
+class Course {
+	private String courseName;
+	private HashMap<Student, Integer> studentGrades;
+
+	public Course(String courseName) {
+		this.courseName = courseName;
+		this.studentGrades = new HashMap<>();
+	}
+
+	public void addStudent(Student s, int grade) {
+		studentGrades.put(s, grade);
+	}
+
+	public void printStudentList() {
+		System.out.println("Course: " + courseName);
+		for (Student s : studentGrades.keySet()) {
+			System.out.println(" - " + s.getDetails() + studentGrades.get(s));
+		}
+	}
+}
+
+// ----------------- Main Program -----------------
+public class Main {
+	public static void main(String[] args) {
+		// Create courses
+		ArrayList<Course> courses = new ArrayList<>();
+		Course javaCourse = new Course("Java Programming");
+		Course dbCourse = new Course("Databases");
+		courses.add(javaCourse);
+		courses.add(dbCourse);
+
+		// Create students
+		Student s1 = new Student("Alice", "alice@hotmail.com", "S001");
+		Student s2 = new Student("Bob", "bob@gmail.com", "S002");
+		Student s3 = new Student("Mike", "charlie@QA.com", "S003");
+
+		// Enrol students into courses with grades
+		javaCourse.addStudent(s1, 85);
+		javaCourse.addStudent(s2, 70);
+
+		dbCourse.addStudent(s2, 65);
+		dbCourse.addStudent(s3, 90);
+
+		// Print all students in each course
+		System.out.println("=== Students in Each Course ===");
+		for (Course c : courses) {
+			c.printStudentList();
+		}
+	}
+}

@@ -1,0 +1,189 @@
+docker run -d --name my-mysql -e MYSQL_ROOT_PASSWORD=Password123 -p 3307:3306 mysql:8.0
+
+-- 1 SQL and RDBMS Basics Examples
+-- 1.1 Create qastore database, tables, keys and insert records
+
+CREATE DATABASE IF NOT EXISTS qastore;
+USE qastore;
+
+-- Temporarily disable foreign key checks for inserts
+SET FOREIGN_KEY_CHECKS = 0;
+
+-- Create company table
+CREATE TABLE company (
+    company_no INT NOT NULL,
+    company_name VARCHAR(20) NOT NULL,
+    tel VARCHAR(15),
+    county VARCHAR(15),
+    post_code CHAR(8),
+    PRIMARY KEY (company_no)
+);
+
+-- Insert company records
+INSERT INTO company (company_no, company_name, tel, county, post_code) VALUES
+(1000,'Happy Heaters PLC','(01306)345672','London','SE3 89L'),
+(2000,'Icicle Igloos Inc','0181-987-1265','London','N1 4LH'),
+(3000,'Judo Jeans PLC','0171-478-2990','London','N9 2FG'),
+(4000,'Kipper Kickers Inc','01254-987766','Devon','PL4 9RT');
+
+-- Create contact table
+CREATE TABLE contact (
+    company_no INT NOT NULL,
+    contact_code CHAR(2) NOT NULL,
+    contact_name VARCHAR(20) NOT NULL,
+    job_title VARCHAR(30),
+    tel VARCHAR(25),
+    notes VARCHAR(60),
+    PRIMARY KEY (company_no, contact_code),
+    FOREIGN KEY (company_no) REFERENCES company(company_no)
+);
+
+-- Insert contact records
+INSERT INTO contact (company_no, contact_code, contact_name, job_title, tel, notes) VALUES
+(1000,'MM','Madonna Moncada','Accounts Officer','(0207)223-9887','We first visited her in January 1988'),
+(2000,'NN','Nadia Nowakowski','Bought Ledger Manager','01546-456566 Ext 22','Works only on Monday and Wednesdays'),
+(2000,'OO','Odell Onorato','Chief Executive Officer','0207-341-566670 ext 10',NULL),
+(3000,'PP','Perry Paulos','Development Director','0131 324545 ext 213','Insists on personally signing all orders'),
+(3000,'QQ','Quincy Quan','Electrical Manager','01456 801711 ext 44','Has been in his job a long time'),
+(3000,'RR','Rossana Roundy','Federal Reporting Officer','0208-111-11111','Has a preference for Apple Macintosh systems'),
+(4000,'SS','Sherell Sparacino','Gourmet Foods Purchaser','0207-988-0777',NULL),
+(4000,'TT','Takako Troyer','Head of Inter Office Systems','05673-476878 ext 221','Is listed in Whos Who 1988 onwards'),
+(4000,'UU','Usha Upson','Accounts Officer','0823-598494 ext 1','Is upset becuase he is not chief executive!');
+
+-- Create dept table
+CREATE TABLE dept (
+    dept_no INT NOT NULL,
+    dept_name VARCHAR(20) NOT NULL,
+    manager VARCHAR(20),
+    sales_target DECIMAL(12,4),
+    PRIMARY KEY (dept_no)
+);
+
+-- Insert dept records
+INSERT INTO dept (dept_no, dept_name, manager, sales_target) VALUES
+(1,'Animal Products','Amiee Amerson',5.0000),
+(2,'Business Systems','Bart Bliss',15.0000),
+(3,'Credit Control','Callie Casado',25.0000),
+(4,'Desktop Systems','Dale Danzy',5.0000),
+(5,'Electrical Repairs','Eldon Eno',45.0000);
+
+-- Create salesperson table
+CREATE TABLE salesperson (
+    emp_no INT NOT NULL,
+    first_name VARCHAR(15) NOT NULL,
+    last_name VARCHAR(15) NOT NULL,
+    dept_no INT NOT NULL,
+    salary DECIMAL(12,4),
+    sales_target DECIMAL(12,4),
+    county VARCHAR(15),
+    post_code CHAR(8),
+    tel VARCHAR(25),
+    notes VARCHAR(50),
+    PRIMARY KEY (emp_no),
+    FOREIGN KEY (dept_no) REFERENCES dept(dept_no)
+);
+
+-- Insert salesperson records
+INSERT INTO salesperson (emp_no, first_name, last_name, dept_no, salary, sales_target, county, post_code, tel, notes) VALUES
+(10,'Ferne','Filmore',1,10.0000,9.0000,'Surrey','RT8 8LP','0171-908-8765','Joined in Sept 1996'),
+(20,'Gertie','Gatling',2,11.0000,14.0000,'Hampshire','RF3 9UD','(0306)7871','Bright Prospect'),
+(30,'Hattie','Hardegree',2,12.0000,7.0000,'Hampshire','W45 TY3','(0908)922211','Should be promoted within the next 4 months'),
+(40,'Inge','Isman',3,13.0000,11.0000,'London',NULL,'0171-898-9656',NULL),
+(50,'Janene','Jent',3,14.0000,12.0000,'Surrey','CR1 2GH','0181-898-1126',NULL),
+(60,'Karena','Kilburn',3,15.0000,13.0000,'Surrey',NULL,'0181-877-0123','Dislikes international travel');
+
+-- Create sale table
+CREATE TABLE sale (
+    order_no INT NOT NULL,
+    emp_no INT NOT NULL,
+    company_order_no VARCHAR(15),
+    company_no INT NOT NULL,
+    contact_code CHAR(2) NOT NULL,
+    order_value DECIMAL(12,2),
+    order_date DATETIME,
+    description VARCHAR(140),
+    PRIMARY KEY (order_no),
+    FOREIGN KEY (emp_no) REFERENCES salesperson(emp_no),
+    FOREIGN KEY (company_no, contact_code) REFERENCES contact(company_no, contact_code)
+);
+
+-- Insert sale records
+INSERT INTO sale (order_no, emp_no, company_order_no, company_no, contact_code, order_value, order_date, description) VALUES
+(100,60,'AA1',1000,'MM',7.11,'2000-06-24 10:20:30','IBM Thinkpad 755CE'),
+(200,60,'Ord34',3000,'QQ',6.22,'2000-05-01 11:21:31','MS Office Professional * 30'),
+(300,60,'Ord39',2000,'OO',12.33,'2000-07-14 12:22:32','25 ScanPRO 4800 Scanner'),
+(400,10,'DGG5',1000,'MM',5.44,'2000-08-09 13:23:33','Modems and Cables etc'),
+(500,60,'DPF78',4000,'TT',2.55,'2000-07-23 14:24:34','Laser printer'),
+(600,50,'AC12',3000,'PP',27.66,'2000-05-23 15:25:35','Complete Desktop Publishing System'),
+(700,10,'23',2000,'OO',3.77,'2000-01-23 16:26:36','SQL Server 7.0 20 user licence'),
+(800,60,'B-123E',3000,'RR',3.88,'2000-12-15 17:27:37','Printer cartridges');
+
+-- Re-enable foreign key checks
+SET FOREIGN_KEY_CHECKS = 1;
+
+-- 1.2 Check contents of qastore database
+SELECT * FROM company;
+SELECT * FROM contact;
+SELECT * FROM dept;
+SELECT * FROM salesperson;
+SELECT * FROM sale;
+
+
+package databaseMySql;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.Statement;
+
+public class Main {
+    public static void main(String[] args) {
+        // MySQL connection parameters
+        String url = "jdbc:mysql://localhost:3307/qastore"; // database name is qastore
+        String user = "root";
+        String password = "Password123";
+
+        Connection conn = null;
+        Statement stmt = null;
+        ResultSet rs = null;
+
+        try {
+            // Load MySQL JDBC Driver (optional in recent versions)
+            Class.forName("com.mysql.cj.jdbc.Driver");
+
+            // Connect to MySQL
+            conn = DriverManager.getConnection(url, user, password);
+            System.out.println("Connected to database successfully!");
+
+            // Create a statement
+            stmt = conn.createStatement();
+
+            // Execute query
+            String sql = "SELECT * FROM sale";
+            rs = stmt.executeQuery(sql);
+
+            // Print the result
+            System.out.println("order_no | emp_no | company_order_no | company_no | contact_code | order_value | order_date | description");
+            while (rs.next()) {
+                int orderNo = rs.getInt("order_no");
+                int empNo = rs.getInt("emp_no");
+                String companyOrderNo = rs.getString("company_order_no");
+                int companyNo = rs.getInt("company_no");
+                String contactCode = rs.getString("contact_code");
+                double orderValue = rs.getDouble("order_value");
+                String orderDate = rs.getString("order_date");
+                String description = rs.getString("description");
+
+                System.out.printf("%d | %d | %s | %d | %s | %.2f | %s | %s%n",
+                        orderNo, empNo, companyOrderNo, companyNo, contactCode, orderValue, orderDate, description);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            // Close resources
+            try { if (rs != null) rs.close(); } catch (Exception e) { }
+            try { if (stmt != null) stmt.close(); } catch (Exception e) { }
+            try { if (conn != null) conn.close(); } catch (Exception e) { }
+        }
+    }
+}
