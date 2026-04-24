@@ -1,0 +1,161 @@
+
+
+                       COURSEWARE ASSET MANAGEMENT SYSTEM
+
+   *--------------------------------------------------------------------------+
+   |                                                                          |
+   |                        COURSEWARE BUILD LIST                             |
+   |                             (DELEGATE)                                   |
+   |                                                                          |
+   |                                                                          |
+   +--------------------------------------------------------------------------*
+
+
+   Date Generated: 23.04.26
+
+
+   +--------------------+
+   | COURSE INFORMATION |
+   +--------------------+-----------------------------------------------------+
+   |                                                                          |
+      Course Title     :  Software Developer, Programming with Java            
+
+      Course Code      :  ASDXDSD8M1
+      Course Version   :  1.0
+      Course Author    :  
+      Course Company   :  QA Ltd
+      First Run Date   :  20.04.26
+      Setup Image      :  
+      Major Version    :  1.0
+      Course Rework    :  
+   |                                                                          |
+   +--------------------------------------------------------------------------/
+
+
+   +====================+
+   | BINDER 1           |
+   +====================+=====================================================+
+   |                                                                          |
+      Binding          :  Digital - Mimeo
+
+
+      +--------------------+
+      |  BOOK 1            |
+      +--------------------+-----------------------------------------------+
+      |                                                                    |
+         Book Type        :  Handout
+
+         Size             :  A4 Portrait
+         Divider          :  None
+         Render in        :  Colour
+         Present as       :  None
+         Paper            :  None
+         Paper Colour     :  None
+         Copyright Page   :  Do not include
+
+
+         Additional Print Instructions
+         -----------------------------
+         
+
+         Files
+         -----
+Slides:
+00-Introduction.pptx                          01-Java Basics getting started.pptx
+02-Java Basics - Vars and Selection.pptx      03-Java Basics - Methods.pptx
+04-Java Basics - Arrays and Loops.pptx        05-Object Oriented programming.pptx
+06-Static fields and methods.pptx             07-enums and Strings.pptx
+08-Collections and Generics.pptx              09-Exceptions.pptx
+10-Inheritance.pptx                           11-Polymorphism.pptx
+12-Abstract classes.pptx                      13-Interfaces.pptx
+14-Accessing databases.pptx                   
+
+Labs:
+EG 01-Java Basics getting started.docx
+EG 02-Java Basics - Vars and Selection.docx   EG 03-Java Basics - Methods.docx
+EG 04-Java Basics - Arrays and Loops.docx     EG 05-Object Oriented programming.docx
+EG 06-Static fields and methods.docx          EG 07-enums and Strings.docx
+EG 08-Collections and Generics.docx           EG 09-Exceptions.docx
+EG 10-Inheritance.docx                        EG 11-Polymorphism.docx
+EG 12-Abstract classes.docx                   EG 13-Interfaces.docx
+EG 14- Accessing databases Using MySQL.docx   
+
+Appendix:
+12-Introduction to Testing.pptx                        14- Streams and Lambda.pptx
+15- Threading.pptx                                     15-Threading Workshop.docx
+16-Accessing files.pptx                                EG 11- Introduction to Testing.docx
+EG 13 Extra-Accessing databases - SQL_Workshop.docx    EG 13- Accessing databases App.docx
+EG 13-Accessing databases Maven.docx                   EG 14- Streams and Lambda.docx
+EG 14a- Accessing databases Maven - Copy.docx          EG 14b Extra-Accessing databases - SQL_Workshop.docx
+EG 15-Threading.docx                                   EG 16- Accessing Files.docx
+EG OOP Challenge.docx                                  Week 1 Review Exercise Solution.txt
+Week 1 Review Exercise.docx
+
+      |                                                                    |
+      +------------------------END OF BOOK 1-------------------------------/
+      +--------------------+
+      |  BOOK 2            |
+      +--------------------+-----------------------------------------------+
+      |                                                                    |
+         Book Type        :  Slide deck
+
+         Size             :  
+         Divider          :  None
+         Render in        :  Colour
+         Present as       :  None
+         Paper            :  None
+         Paper Colour     :  None
+         Copyright Page   :  Do not include
+
+
+         Additional Print Instructions
+         -----------------------------
+         
+
+         Files
+         -----
+	Slides:
+00-Introduction.pptx                          01-Java Basics getting started.pptx
+02-Java Basics - Vars and Selection.pptx      03-Java Basics - Methods.pptx
+04-Java Basics - Arrays and Loops.pptx        05-Object Oriented programming.pptx
+06-Static fields and methods.pptx             07-enums and Strings.pptx
+08-Collections and Generics.pptx              09-Exceptions.pptx
+10-Inheritance.pptx                           11-Polymorphism.pptx
+12-Abstract classes.pptx                      13-Interfaces.pptx
+14-Accessing databases.pptx                   
+
+
+
+      |                                                                    |
+      +------------------------END OF BOOK 2-------------------------------/
+
+   |                                                                          |
+   +==========================END OF BINDER 1=================================/
+  
+   +--------------------+
+   |  ADDITIONAL ITEMS  |
+   +--------------------+-----------------------------------------------------+
+   |                                                                          |
+      Stationary
+      ==========
+
+      Pick and Pack
+      =============
+
+      Additional Printed Items
+      ========================
+
+   |                                                                          |
+   +--------------------------------------------------------------------------/
+
+
+   +--------------------------+
+   |  ADDITIONAL INFORMATION  |
+   +--------------------------+-----------------------------------------------+
+   |                                                                          |
+      
+   |                                                                          |
+   +--------------------------------------------------------------------------/
+
+
+QA Ltd 2026

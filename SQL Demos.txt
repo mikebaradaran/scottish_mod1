@@ -1,0 +1,45 @@
+SELECT *  FROM Customers WHERE CustomerID='ALFKI'
+SELECT *  FROM Orders WHERE CustomerID='ALFKI'
+
+SELECT * FROM Customers ORDER BY Country DESC, City DESC
+
+SELECT * FROM Products ORDER BY UnitsInStock ASC
+
+SELECT * FROM Products WHERE UnitsInStock = 0 OR UnitsInStock = 1
+
+SELECT * FROM Products WHERE UnitsInStock < 5
+
+SELECT * FROM Products WHERE UnitsInStock > 100 AND UnitPrice > 20
+
+SELECT * FROM Products WHERE UnitsInStock > 100 ORDER BY UnitPrice DESC
+
+INSERT INTO Products(ProductName, SupplierID, CategoryID, UnitsInStock, UnitPrice, QuantityPerUnit)
+VALUES ('QA JAM',8,1,1000,2.50,'As many as you like!')
+
+DELETE FROM Products WHERE ProductName='QA JAM'
+
+Update Products  SET ProductName='QA Best Jam'  WHERE ProductName='QA JAM' 
+
+SELECT CompanyName, Country, Orders.* FROM Customers 
+INNER JOIN Orders 
+ON Orders.CustomerID = Customers.CustomerID
+ORDER BY CustomerID
+
+-- Show all customers WHO HAVE / NOT placed an order
+SELECT CompanyName, Country, Orders.* 
+FROM Customers LEFT JOIN Orders 
+ON Orders.CustomerID = Customers.CustomerID
+ORDER BY CustomerID
+
+-- Show all customers WHO HAVE NOT placed an order
+SELECT CompanyName, Country, Orders.* 
+FROM Customers LEFT JOIN Orders 
+ON Orders.CustomerID = Customers.CustomerID
+WHERE OrderID IS NULL
+
+
+-- Show all customers WHO HAVE NOT placed an order
+SELECT Customers.*
+FROM Customers LEFT OUTER JOIN Orders 
+ON Orders.CustomerID = Customers.CustomerID
+WHERE OrderID IS NULL
