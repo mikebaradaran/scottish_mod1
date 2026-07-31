@@ -5,7 +5,7 @@ public class Program {
 	public static void main(String[] args) {
 		ArrayList<Car> cars = new ArrayList<Car>();
 		cars.add(new Car("Honda"));
-		cars.add(new RacingCar("MacLarren", "Bob", 2));
+		cars.add(new RacingCar("MacLarren", "Bob", 12));
 		cars.add(new Car("Ford"));
 		cars.add(new RacingCar("Ferrari", "JB", 5));
 
@@ -25,6 +25,10 @@ public class Program {
 		if (dt > 100) {
 			System.out.println(
 					"This car won: " + car.getModel() + " at this distance " + car.getDistanceTravelled());
+			
+			if(car instanceof RacingCar) {
+				System.out.println("The winner is " + ((RacingCar)car).getDriver());
+			}
 			return true;
 		}
 		return false;
