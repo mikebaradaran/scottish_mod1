@@ -1,0 +1,101 @@
+import java.util.ArrayList;
+
+public class Program {
+
+	public static void main(String[] args) {
+		ArrayList<Car> cars = new ArrayList<Car>();
+		cars.add(new Car("Honda"));
+		cars.add(new RacingCar("MacLarren", "Bob", 2));
+		cars.add(new Car("Ford"));
+		cars.add(new RacingCar("Ferrari", "JB", 5));
+
+		while (true) {
+			for (Car car : cars) {
+				if (raceCar(car) == true) {
+					return;
+				}
+			}
+		}
+	}
+
+	private static boolean raceCar(Car car) {
+		car.accelerate(5);
+		car.move();
+		int dt = car.distanceTravelled;
+		if (dt > 100) {
+			System.out.println(
+					"This car won: " + car.getModel() + " at this distance " + car.getDistanceTravelled());
+			return true;
+		}
+		return false;
+	}
+
+}
+
+//----------------------------------------------
+
+public class Car {
+	private String model;
+	protected int speed;
+	protected int distanceTravelled;
+	
+	public int getDistanceTravelled() {
+		return distanceTravelled;
+	}
+	public String getModel() {
+		return model;
+	}
+	public int getSpeed() {
+		return speed;
+	}
+	
+	public Car(String model) {
+		this.model = model;
+	}
+	
+	public void accelerate(int seconds) {
+		speed += seconds * 5;
+	}
+	
+	public void move() {
+		distanceTravelled += speed * 2;
+	}
+	
+	public void getToSixty() {
+		speed = 60;
+	}
+}
+//-------------------------------------------------------
+public class RacingCar extends Car{
+	private int turboFactor;
+	private String driver;
+	
+	public String getDriver() {
+		return driver;
+	}
+
+	public int getTurboFactor() {
+		return turboFactor;
+	}
+
+	public void setTurboFactor(int turboFactor) {
+		this.turboFactor = turboFactor;
+	}
+
+	public RacingCar(String model, String driver) {
+		super(model);
+		this.driver = driver;
+		turboFactor = 2;
+	}
+	public RacingCar(String model, String driver, int turboFactor) {
+		this(model, driver);
+		this.turboFactor = turboFactor;
+	}
+	
+	@Override
+	public void accelerate(int seconds) {
+		super.accelerate(seconds);
+		this.speed *= turboFactor;
+	}
+	
+}
