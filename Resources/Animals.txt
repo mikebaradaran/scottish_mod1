@@ -1,0 +1,91 @@
+public class Animals {
+
+	public static void main(String[] args) {
+		Animal[] animals = { new Duck("Donald"), new Penguin("Pingu"), new Fish("Nemo") };
+
+		// Polymorphism
+		for (Animal animal : animals) {
+
+			System.out.println(animal.getName() + " is a " + animal.getAnimalType());
+
+			// Detect if the Animal is a Bird
+			if (animal instanceof Bird) {
+
+				Bird bird = (Bird) animal;
+
+				bird.makeNest();
+			}
+
+			System.out.println();
+		}
+
+	}
+}
+//-----------------------------------------------------------------
+enum AnimalType {
+	Fish, Amphibian, Reptil, Mammal, Bird, Invertebrate
+}
+//-----------------------------------------------------------------
+abstract class Animal {
+
+	protected AnimalType animalType;
+	private String name;
+
+	public Animal(String name) {
+		this.name = name;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public AnimalType getAnimalType() {
+		return animalType;
+	}
+}
+//-----------------------------------------------------------------
+abstract class Bird extends Animal {
+
+	public Bird(String name) {
+		super(name);
+		animalType = AnimalType.Bird;
+	}
+
+	public abstract void makeNest();
+}
+//-----------------------------------------------------------------
+class Duck extends Bird {
+
+	public Duck(String name) {
+		super(name);
+	}
+
+	@Override
+	public void makeNest() {
+		System.out.println(getName() + " makes a nest near the water.");
+	}
+}
+//-----------------------------------------------------------------
+class Penguin extends Bird {
+
+	public Penguin(String name) {
+		super(name);
+	}
+
+	@Override
+	public void makeNest() {
+		System.out.println(getName() + " makes a nest using stones.");
+	}
+}
+//-----------------------------------------------------------------
+class Fish extends Animal {
+
+	public Fish(String name) {
+		super(name);
+		animalType = AnimalType.Fish;
+	}
+
+	public void swim() {
+		System.out.println(getName() + " is swimming.");
+	}
+}
